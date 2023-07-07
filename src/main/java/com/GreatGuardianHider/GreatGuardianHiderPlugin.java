@@ -16,7 +16,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 @PluginDescriptor(
 		name = "Great Guardian Hider"
 )
-public class GreatGuardianHider extends Plugin
+public class GreatGuardianHiderPlugin extends Plugin
 {
 	private final Hooks.RenderableDrawListener drawListener = this::shouldDraw;
 	private boolean hideNPCs;

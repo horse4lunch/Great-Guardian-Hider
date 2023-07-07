@@ -7,7 +7,7 @@ public class GreatGuardianHiderPluginTest
 {
 	public static void main(String[] args) throws Exception
 	{
-		ExternalPluginManager.loadBuiltin(GreatGuardianHider.class);
+		ExternalPluginManager.loadBuiltin(GreatGuardianHiderPlugin.class);
 		RuneLite.main(args);
 	}
 }
