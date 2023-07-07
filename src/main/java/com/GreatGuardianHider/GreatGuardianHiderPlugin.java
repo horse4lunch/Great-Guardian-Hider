@@ -35,6 +35,7 @@ import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.client.callback.Hooks;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
@@ -44,7 +45,10 @@ import net.runelite.client.plugins.PluginDescriptor;
 )
 public class GreatGuardianHiderPlugin extends Plugin
 {
+
 	private final Hooks.RenderableDrawListener drawListener = this::shouldDraw;
+
+
 	private boolean hideNPCs;
 
 	@Inject
@@ -53,8 +57,7 @@ public class GreatGuardianHiderPlugin extends Plugin
 	@Inject
 	private Hooks hooks;
 
-	@Inject
-	private GreatGuardianHiderConfig config;
+
 
 	@Override
 	protected void startUp()
@@ -73,8 +76,7 @@ public class GreatGuardianHiderPlugin extends Plugin
 	public void onItemContainerChanged(ItemContainerChanged event)
 	{
 		final ItemContainer inventory = client.getItemContainer(InventoryID.INVENTORY);
-
-		if (inventory != null && (inventory.contains(ItemID.CATALYTIC_GUARDIAN_STONE) || inventory.contains(ItemID.ELEMENTAL_GUARDIAN_STONE)) && config.hideNPCs())
+		if (inventory != null && (inventory.contains(ItemID.CATALYTIC_GUARDIAN_STONE) || inventory.contains(ItemID.ELEMENTAL_GUARDIAN_STONE)))
 		{
 			hideNPCs = true;
 		}
@@ -85,7 +87,7 @@ public class GreatGuardianHiderPlugin extends Plugin
 	}
 
 	@VisibleForTesting
-	boolean shouldDraw(Renderable renderable, boolean WhyIsThisNeeded)
+	boolean shouldDraw(Renderable renderable, boolean Draw)
 	{
 		if (renderable instanceof NPC)
 		{
@@ -94,15 +96,11 @@ public class GreatGuardianHiderPlugin extends Plugin
 			if (!hideNPCs && npc.getId() == npcIdToHide)
 			{
 				return false;
+
 			}
 		}
 
 		return true;
 	}
 
-	@Provides
-	GreatGuardianHiderConfig provideConfig(ConfigManager configManager)
-	{
-		return configManager.getConfig(GreatGuardianHiderConfig.class);
-	}
 }
