@@ -59,7 +59,7 @@ public class GreatGuardianHider extends Plugin
 	}
 
 	@VisibleForTesting
-	boolean shouldDraw(Renderable renderable, boolean drawingUI)
+	boolean shouldDraw(Renderable renderable, boolean WhyIsThisNeeded)
 	{
 		if (renderable instanceof NPC)
 		{
