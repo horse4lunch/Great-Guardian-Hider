@@ -76,7 +76,7 @@ public class GreatGuardianHiderPlugin extends Plugin
 	public void onItemContainerChanged(ItemContainerChanged event)
 	{
 		final ItemContainer inventory = client.getItemContainer(InventoryID.INVENTORY);
-		if (inventory != null && (inventory.contains(ItemID.CATALYTIC_GUARDIAN_STONE) || inventory.contains(ItemID.ELEMENTAL_GUARDIAN_STONE)))
+		if (inventory != null && (inventory.contains(ItemID.CATALYTIC_GUARDIAN_STONE) || inventory.contains(ItemID.ELEMENTAL_GUARDIAN_STONE) || inventory.contains(ItemID.POLYELEMENTAL_GUARDIAN_STONE)))
 		{
 			hideNPCs = true;
 		}
