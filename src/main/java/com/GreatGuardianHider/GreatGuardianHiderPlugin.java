@@ -27,15 +27,12 @@
 package com.GreatGuardianHider;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.inject.Provides;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
 import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.client.callback.Hooks;
-import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
-import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 
@@ -76,7 +73,7 @@ public class GreatGuardianHiderPlugin extends Plugin
 	public void onItemContainerChanged(ItemContainerChanged event)
 	{
 		final ItemContainer inventory = client.getItemContainer(InventoryID.INVENTORY);
-		if (inventory != null && (inventory.contains(ItemID.CATALYTIC_GUARDIAN_STONE) || inventory.contains(ItemID.ELEMENTAL_GUARDIAN_STONE) || inventory.contains(ItemID.POLYELEMENTAL_GUARDIAN_STONE)))
+		if (inventory != null && (inventory.contains(ItemID.CATALYTIC_GUARDIAN_STONE) || inventory.contains(ItemID.ELEMENTAL_GUARDIAN_STONE) || inventory.contains(ItemID.POLYCATALYTIC_GUARDIAN_STONE) || inventory.contains(ItemID.POLYELEMENTAL_GUARDIAN_STONE)))
 		{
 			hideNPCs = true;
 		}
